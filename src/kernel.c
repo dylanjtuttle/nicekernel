@@ -31,7 +31,7 @@ void print_string(char *str, unsigned char color) {
 
 void print_line(char *str, unsigned char color, unsigned int *vga_index) {
     // Print the string
-    print_string("Hello, this is a very nice kernel!", GREEN);
+    print_string(str, color);
 
     // Increment the buffer so it points to the next line
     *vga_index += 80;
