@@ -14,19 +14,13 @@ Ensure that the following tools are installed:
 
 ## Use
 
-While in the `nicekernel` directory, make a new subdirectory (siblings with `src`) called `build`:
-
-```bash
-$ mkdir build
-```
-
-Next, compile the kernel and create the ISO file using the makefile:
+While in the `nicekernel` directory, compile the kernel and create the ISO file using the makefile:
 
 ```bash
 $ make
 ```
 
-The ISO file is found at `build/nicekernel.iso`
+The ISO file is found at `build/nicekernel.iso`.
 
 If you want, you can delete all of the build files (and the ISO file) with the makefile as well:
 
