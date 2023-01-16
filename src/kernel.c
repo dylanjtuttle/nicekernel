@@ -10,8 +10,7 @@
 unsigned short *terminal_buffer;
 unsigned int vga_index;
 
-void clear_screen(void)
-{
+void clear_screen(void) {
     int index = 0;
     /* there are 25 lines each of 80 columns;
        each element takes 2 bytes */
@@ -21,8 +20,7 @@ void clear_screen(void)
     }
 }
 
-void print_string(char *str, unsigned char color)
-{
+void print_string(char *str, unsigned char color) {
     int index = 0;
     while (str[index]) {
             terminal_buffer[vga_index] = (unsigned short)str[index]|(unsigned short)color << 8;
@@ -31,15 +29,21 @@ void print_string(char *str, unsigned char color)
     }
 }
 
-void main(void)
-{
+void print_line(char *str, unsigned char color, unsigned int *vga_index) {
+    // Print the string
+    print_string("Hello, this is a very nice kernel!", GREEN);
+
+    // Increment the buffer so it points to the next line
+    vga_index += 80;
+}
+
+void main(void) {
     /* TODO: Add random f-word here */
     terminal_buffer = (unsigned short *)VGA_ADDRESS;
     vga_index = 0;
 
     clear_screen();
-    print_string("Hello, this is a very nice kernel!", GREEN);
-    vga_index = 80;    /* next line */
-    print_string("Goodbye, this is no longer a very nice kernel :(", RED);
+    print_line("Hello, this is a very nice kernel!", GREEN, &vga_index);
+    print_line("Goodbye, now this is a very evil kernel >:)", RED, &vga_index);
     return;
 }
