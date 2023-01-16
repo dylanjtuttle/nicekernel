@@ -15,17 +15,17 @@ void clear_screen(void) {
     /* there are 25 lines each of 80 columns;
        each element takes 2 bytes */
     while (index < 80 * 25 * 2) {
-            terminal_buffer[index] = ' ';
-            index += 2;
+        terminal_buffer[index] = ' ';
+        index += 2;
     }
 }
 
 void print_string(char *str, unsigned char color) {
     int index = 0;
     while (str[index]) {
-            terminal_buffer[vga_index] = (unsigned short)str[index]|(unsigned short)color << 8;
-            index++;
-            vga_index++;
+        terminal_buffer[vga_index] = (unsigned short)str[index]|(unsigned short)color << 8;
+        index++;
+        vga_index++;
     }
 }
 
@@ -34,7 +34,7 @@ void print_line(char *str, unsigned char color, unsigned int *vga_index) {
     print_string("Hello, this is a very nice kernel!", GREEN);
 
     // Increment the buffer so it points to the next line
-    vga_index += 80;
+    *vga_index += 80;
 }
 
 void main(void) {
